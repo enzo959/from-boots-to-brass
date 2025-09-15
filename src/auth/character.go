@@ -27,39 +27,54 @@ type Character struct { // create class character
 //shoes string
 //}
 
-func InitCharacter() {
-	var c Character
-	p1 := Character{"soldat_FR", "France", 0, 100, 100, 0, []string{"FAMAS", "vide", "vide", "vide", "vide"}}
+func InitCharacter() (Character, Character, Character) {
+	p1 := Character{"soldat_FR", "France", 0, 100, 100, 0, []string{"FAMAS", "vide", "vide", "vide", "vide"}} // var p1
 	p2 := Character{"soldat_US", "U.S.A", 0, 100, 100, 0, []string{"M16", "vide", "vide", "vide", "vide"}}
 	p3 := Character{"soldat_RU", "U.R.S.S", 0, 100, 100, 0, []string{"PPSH", "vide", "vide", "vide", "vide"}}
-	for {
-		fmt.Println("Choisi ton camp:\n1-France\n2-U.S.A\n3-U.R.S.S")
-		fmt.Scan(&c.team)
-		if c.team == "France" {
-			fmt.Print(p1)
-			break
-		} else if c.team == "U.S.A" {
-			fmt.Print(p2)
-			break
-		} else if c.team == "soldat_RU" {
-			fmt.Print(p3)
-			break
-		} else {
-			fmt.Print("Choisissez une team valide.")
-			time.Sleep(3 * time.Second)
-			utils.Clear()
-			continue
-		}
-	}
+	return p1, p2, p3
 }
 
 //func displayinfo() {
 
 //}
 
-//func characterCreation() {
+func CharacterCreation(p1, p2, p3 Character) Character {
+	var choice string
+	var perso Character
 
-//}
+	for {
+		fmt.Println("Choisissez votre camp :\n1 - France\n2 - U.S.A\n3 - U.R.S.S")
+		fmt.Scan(&choice)
+
+		switch choice {
+		case "1", "France":
+			perso = p1
+		case "2", "U.S.A":
+			perso = p2
+		case "3", "U.R.S.S":
+			perso = p3
+		default:
+			fmt.Println("Choisissez une option valide.")
+			time.Sleep(2 * time.Second)
+			utils.Clear()
+			continue
+		}
+		break
+	}
+
+	fmt.Println("entre ton nom soldat")
+	var newName string
+	fmt.Scan(&newName)
+	perso.name = newName
+
+	fmt.Printf("\nVous êtes : %s\n", perso.name)
+	fmt.Printf("Team : %s | Niveau : %d | PV : %d/%d | Argent : %d\n",
+		perso.team, perso.level, perso.pv_act, perso.pv_max, perso.money)
+	fmt.Printf("Équipement : %v\n", perso.bag)
+
+	return perso
+
+}
 
 //func upgradeInventorySlot() {
 
