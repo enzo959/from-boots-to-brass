@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	auth.InitCharacter()        // start func InitCharacter
-	time.Sleep(5 * time.Second) //
-	utils.Clear()               // start func Clear
+	p1, p2, p3 := auth.InitCharacter()
+	auth.CharacterCreation(p1, p2, p3) // start func InitCharacter
+	time.Sleep(10 * time.Second)       // stop the programme during 5s
+	utils.Clear()                      // start func Clear
 }
