@@ -2,41 +2,55 @@ package auth
 
 import (
 	"fmt"
-	"projet-red_from-boots-to-brass/src/utils"
-	"time"
 )
 
 type Character struct { // create class character
-	name   string
-	team   string
-	level  int
-	pv_max int
-	pv_act int
-	money  int
-	bag    []string
+	Name  string
+	Class string
+	Level int
+	PvMax int
+	PvAct int
+	Money int
+	Bag   []string
 }
 
-type Skill struct { // create class Skill
-	name_wp string
-	pt_dam  int
+type Inventory struct {
+	text string
+	Inv  []string
 }
 
-type Equipment struct { // create class equipement
-	boots string
-	pants string
-	shoes string
+func InitCharacter() Character {
+	var name, class string
+
+	fmt.Print("Entrez le nom du personnage : ")
+	fmt.Scanln(&name)
+
+	fmt.Print("Entrez la classe du personnage : ")
+	fmt.Scanln(&class)
+
+	return Character{
+		Name:  name,
+		Class: class,
+		Level: 1,
+		PvMax: 100,
+		PvAct: 100,
+		Money: 50,
+		Bag:   []string{},
+	}
 }
 
-func displaySkills() Skill {
-	p1 := Skill{"test", 10}
-	return p1
+func DisplayInfo() {
+	fmt.Print(InitCharacter())
 }
 
-func DisplayInfo() (Character, Character, Character) {
+func AccessInventory(b Character) {
+	fmt.Print(b.Bag)
+}
+
+/*func DisplayCharacter() (Character, Character, Character) {
 	p1 := Character{"soldat_FR", "France", 0, 100, 100, 0, []string{"FAMAS", "vide", "vide", "vide", "vide"}} // var p1
 	p2 := Character{"soldat_US", "U.S.A", 0, 100, 100, 0, []string{"M16", "vide", "vide", "vide", "vide"}}
 	p3 := Character{"soldat_RU", "U.R.S.S", 0, 100, 100, 0, []string{"PPSH", "vide", "vide", "vide", "vide"}}
-	fmt.Print(displaySkills())
 	return p1, p2, p3
 }
 
@@ -71,9 +85,9 @@ func CharacterCreation(p1, p2, p3 Character) Character {
 
 	fmt.Printf("\nVous êtes : %s\n", perso.name)
 	fmt.Printf("Team : %s | Niveau : %d | PV : %d/%d | Argent : %d\n", //layout
-		perso.team, perso.level, perso.pv_act, perso.pv_max, perso.money)
+		perso.class, perso.level, perso.pv_act, perso.pv_max, perso.money)
 	fmt.Printf("Équipement : %v\n", perso.bag)
 
 	return perso
 
-}
+}*/
