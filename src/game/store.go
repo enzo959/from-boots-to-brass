@@ -1,11 +1,11 @@
 package game
 
-type armory struct {
-	guns    string
-	knife   string
-	uniform string
+type armory struct { // create class armory
+	name      string
+	pt_attack int
 }
 
-func accessInventory() {
-
+func displayArmory() armory {
+	p1 := armory{"test", 1}
+	return p1
 }
