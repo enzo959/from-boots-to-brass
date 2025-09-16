@@ -32,11 +32,11 @@ func initGobelin() {
 
 func initMonster() (Monster, Monster, Monster, Monster, Monster) {
 
-	m2 := Monster{"Xzof", 100, 100, 2}
-	m3 := Monster{"Koxy", 80, 100, 3}
-	m4 := Monster{"dddd", 80, 100, 2}
-	m5 := Monster{"dddd", 70, 100, 2}
-	m6 := Monster{"Boss Monster", 100, 100, 10}
+	m2 := Monster{"M2", 100, 100, 2}
+	m3 := Monster{"M3", 80, 100, 3}
+	m4 := Monster{"M4", 80, 100, 2}
+	m5 := Monster{"M5", 70, 100, 2}
+	m6 := Monster{"M6", 100, 100, 10}
 	return m2, m3, m4, m5, m6
 
 	//if m.Mort {
