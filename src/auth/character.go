@@ -16,28 +16,27 @@ type Character struct { // create class character
 	bag    []string
 }
 
-//type Skill struct { // create class Skill
-//	name_wp string
-//	pt_dam  int
-//}
+type Skill struct { // create class Skill
+	name_wp string
+	pt_dam  int
+}
 
-//type Equipment struct { // create class equipement
-//boots string
-//pants string
-//shoes string
-//}
+type Equipment struct { // create class equipement
+	boots string
+	pants string
+	shoes string
+}
 
-//func InitCharacter() (Character, Character, Character) {
-//p1 := Character{"soldat_FR", "France", 0, 100, 100, 0, []string{"FAMAS", "vide", "vide", "vide", "vide"}} // var p1
-//p2 := Character{"soldat_US", "U.S.A", 0, 100, 100, 0, []string{"M16", "vide", "vide", "vide", "vide"}}
-//p3 := Character{"soldat_RU", "U.R.S.S", 0, 100, 100, 0, []string{"PPSH", "vide", "vide", "vide", "vide"}}
-//return p1, p2, p3
-//}
+func displaySkills() Skill {
+	p1 := Skill{"test", 10}
+	return p1
+}
 
-func Displayinfo() (Character, Character, Character) {
+func DisplayInfo() (Character, Character, Character) {
 	p1 := Character{"soldat_FR", "France", 0, 100, 100, 0, []string{"FAMAS", "vide", "vide", "vide", "vide"}} // var p1
 	p2 := Character{"soldat_US", "U.S.A", 0, 100, 100, 0, []string{"M16", "vide", "vide", "vide", "vide"}}
 	p3 := Character{"soldat_RU", "U.R.S.S", 0, 100, 100, 0, []string{"PPSH", "vide", "vide", "vide", "vide"}}
+	fmt.Print(displaySkills())
 	return p1, p2, p3
 }
 
@@ -78,7 +77,3 @@ func CharacterCreation(p1, p2, p3 Character) Character {
 	return perso
 
 }
-
-//func upgradeInventorySlot() {
-
-//}
