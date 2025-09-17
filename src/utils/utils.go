@@ -19,9 +19,4 @@ func Back() {
 	var back string // var back for back to menu
 	fmt.Println("\nAppuyez sur n'importe quelle lettres pour revenir au menu, ou 'q' pour quitter :")
 	fmt.Scan(&back)
-	if back == "q" {
-		return // exit definitiv
-	} else {
-		Clear()
-	}
 }
