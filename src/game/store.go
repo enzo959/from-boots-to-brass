@@ -1,11 +1,34 @@
 package game
 
-type armory struct { // create class armory
-	name      string
-	pt_attack int
+type Loot struct {
+	Object    string
+	InfoObjet string
+	Pv        int
+	InfoPv    string
+	Price     int
+	InfoPrice string
 }
 
-func displayArmory() armory {
-	p1 := armory{"test", 1}
-	return p1
+type Weapons struct { //create class update
+	Name       string
+	InfoName   string
+	PvAttack   int
+	InfoAttack string
+	Price      int
+	InfoPrice  string
+}
+
+type Equipment struct { // create class equipement
+	Name      string
+	InfoName  string
+	PvSup     int
+	InfoPvSup string
+	Price     int
+	InfoPrice string
+}
+
+type Skill struct { // create class Skill
+	Name          string
+	PtAttack      int
+	LevelRequiert int
 }
