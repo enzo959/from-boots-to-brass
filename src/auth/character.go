@@ -15,17 +15,17 @@ type Character struct { // create class character
 }
 
 type Inventory struct {
-	text string
+	Text string
 	Inv  []string
 }
 
 func InitCharacter() Character {
 	var name, class string
 
-	fmt.Print("Entrez le nom du personnage : ")
+	fmt.Print("Entrez le nom de votre soldat: ")
 	fmt.Scanln(&name)
 
-	fmt.Print("Entrez la classe du personnage : ")
+	fmt.Print("Entrez la nationalitée de votre soldat : ")
 	fmt.Scanln(&class)
 
 	return Character{
