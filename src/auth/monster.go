@@ -7,7 +7,7 @@ type Monster struct {
 	att_pt int
 }
 
-func displayMonster() (Monster, Monster, Monster, Monster, Monster, Monster) {
+func DisplayMonster() (Monster, Monster, Monster, Monster, Monster, Monster) {
 	m1 := Monster{"Training gobelin", 100, 100, 1}
 	m2 := Monster{"M2", 100, 100, 1}
 	m3 := Monster{"M3", 80, 100, 1}
