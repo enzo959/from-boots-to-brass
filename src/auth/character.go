@@ -25,7 +25,7 @@ func InitCharacter() Character {
 	fmt.Print("Entrez le nom de votre soldat: ")
 	fmt.Scanln(&name)
 
-	fmt.Print("Entrez la nationalitée de votre soldat : ")
+	fmt.Print("Entrez la nationalité (classe) de votre soldat: ")
 	fmt.Scanln(&class)
 
 	return Character{
@@ -37,10 +37,6 @@ func InitCharacter() Character {
 		Money: 50,
 		Bag:   []string{},
 	}
-}
-
-func DisplayInfo() {
-	fmt.Print(InitCharacter())
 }
 
 func AccessInventory(b Character) {
