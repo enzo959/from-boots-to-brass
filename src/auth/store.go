@@ -3,7 +3,7 @@ package auth
 type Loot struct {
 	Name      string
 	InfoObjet string
-	Pv        int
+	PvAttack  int
 	InfoPv    string
 	Price     int
 	InfoPrice string
