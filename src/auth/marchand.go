@@ -36,7 +36,7 @@ func BuyItem(perso *Character) {
 	}
 
 	fmt.Printf("\nVous avez %d crédit.\n", perso.Money)
-	fmt.Print("Entrez le numéro de l’objet à acheter, si vous ne voulez rien entrez 0 : ")
+	fmt.Print("Entrez le numéro de l’objet à acheter, si vous ne voulez rien entrez '0' : ")
 
 	var num int
 	fmt.Scanln(&num)
