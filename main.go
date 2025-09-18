@@ -11,7 +11,9 @@ func main() {
 	utils.Clear()
 	t1, t2, t3 := auth.Book() // start func Clear
 	auth.Menu(t1, t2, t3)*/
-	t1, t2 := auth.Book()
+	t1, t2 := auth.Book1()
+	t5 := auth.Book3()
 	auth.Menu(t1, t2)
 	auth.InitCharacter()
+	auth.Battle(t5)
 }
