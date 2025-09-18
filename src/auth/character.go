@@ -32,7 +32,7 @@ func InitCharacter() Character {
 		Name:  name,
 		Class: class,
 		Level: 1,
-		PvMax: 100,
+		PvMax: 200,
 		PvAct: 100,
 		Money: 50,
 		Bag:   []string{},
