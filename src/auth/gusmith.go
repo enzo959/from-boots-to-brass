@@ -1,13 +1,13 @@
 package auth
 
 func Update() (Weapons, Weapons, Weapons, Equipment, Equipment, Equipment, Loot, Loot) {
-	w1 := Weapons{"FAMAS", "inflige:", 30, "de pv et coûte", 75, "crédit"}
-	w2 := Weapons{"M16", "inflige:", 25, "de pv et coûte", 65, "crédit"}
-	w3 := Weapons{"PPSH", "inflige:", 20, "de pv et coûte", 60, "crédit"}
-	e1 := Equipment{"Casque", "Redonne :", 50, "pv et coûte :", 20, "crédit"}
-	e2 := Equipment{"Pantalon", "Redonne :", 30, "pv et coûte :", 15, "crédit"}
-	e3 := Equipment{"Bottes", "Redonne :", 20, "pv et coûte :", 5, "crédit"}
-	l1 := Loot{"Bandage", "redonne :", 10, "de pv et coûte :", 5, "crédit"}
-	l2 := Loot{"Grenade", "inflige :", 30, "de pv et coûte :", 15, "crédit"}
+	w1 := Weapons{"FAMAS", "inflicts:", 30, "of pv and costs", 75, "credit"}
+	w2 := Weapons{"M16", "inflicts:", 25, "of pv and costs", 65, "credit"}
+	w3 := Weapons{"PPSH", "inflicts:", 20, "of pv and costs", 60, "credit"}
+	e1 := Equipment{"Helmet", "Give back:", 50, "of pv and costs", 20, "credit"}
+	e2 := Equipment{"Pants", "Give back:", 30, "of pv and costs", 15, "credit"}
+	e3 := Equipment{"Boots", "Give back:", 20, "of pv and costs", 5, "credit"}
+	l1 := Loot{"Bandage", "Give back:", 10, "of pv and costs", 5, "credit"}
+	l2 := Loot{"Grenada", "inflicts:", 30, "of pv and costs", 15, "credit"}
 	return w1, w2, w3, e1, e2, e3, l1, l2
 }
