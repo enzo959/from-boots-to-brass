@@ -9,19 +9,19 @@ func Fight(t3, t4 Text) {
 	var choiceOption string
 	var perso *Character
 	for {
-		fmt.Println("Menu de jeu:\n1 - Rêgles\n2 - Crée son personage\n3 - Combat\n4 - Learn\n5 - Marchand\n6 - Allé au Menu Principal\nPour quitter le jeu allez au Menu Principal ;)")
+		fmt.Println("Game Menu:\n1 - Rules\n2 - Create your character\n3 - Fight\n4 - Learn\n5 - Store\n6 - Go to the Principal Menu\nTo exit the game, go to the Main Menu. ;)")
 		fmt.Scanln(&choiceOption)
 
 		switch choiceOption {
-		case "1", "Rêgles":
+		case "1", "Rules":
 			fmt.Print(t3)
 			Back()
-		case "2", "Crée son personage":
+		case "2", "Create your character":
 			p := InitCharacter()
 			perso = &p
-			fmt.Printf("Personnage créé: %+v\n", p)
+			fmt.Printf("character creat: %+v\n", p)
 			Back()
-		case "3", "Combat":
+		case "3", "Fight":
 			t5 := Book3()
 			if !CheckPerso(perso) {
 				break
@@ -32,13 +32,13 @@ func Fight(t3, t4 Text) {
 			l1, l2 := Learn()
 			fmt.Printf("%v\n%v\n", l1, l2)
 			Back()
-		case "5", "Marchand":
+		case "5", "Store":
 			if !CheckPerso(perso) {
 				break
 			}
 			Marchand(perso)
 			Back()
-		case "6", "Allé au Menu Principal":
+		case "6", "Go to the Principal Menu":
 			t6 := Book4()
 			fmt.Println(t6)
 			return
@@ -48,18 +48,18 @@ func Fight(t3, t4 Text) {
 	}
 }
 
-// Affiche l'inventaire et renvoie l'index choisi (ou -1 si annuler)
+// Displays the inventory and returns the selected index (or -1 if canceled)
 func chooseItemIndex(bag []Item) int {
 	if len(bag) == 0 {
-		fmt.Println("Inventaire vide.")
+		fmt.Println("Your inventory is empty.")
 		return -1
 	}
 
-	fmt.Println("Inventaire :")
+	fmt.Println("inventory :")
 	for i, it := range bag {
-		fmt.Printf("%d - %s (%s, puissance %d)\n", i+1, it.Name, it.Kind, it.Power)
+		fmt.Printf("%d - %s (%s, power %d)\n", i+1, it.Name, it.Kind, it.Power)
 	}
-	fmt.Print("Choisissez un objet (0 pour annuler) : ")
+	fmt.Print("Select an item, type ‘0’ to cancel : ")
 
 	var n int
 	fmt.Scanln(&n)
@@ -73,12 +73,12 @@ func applyWeapon(item Item, monster *Monster) {
 	min := item.Power / 2
 	dmg := rand.Intn(item.Power-min+1) + min
 	monster.CurLP -= dmg
-	fmt.Printf("Vous utilisez %s et infligez %d dégâts !\n", item.Name, dmg)
+	fmt.Printf("used %s and inflict %d damage !\n", item.Name, dmg)
 }
 
 func applyHeal(item Item, perso *Character) bool {
 	if perso.PvAct >= perso.PvMax-item.Power {
-		fmt.Println("Vos PV sont trop élevés pour utiliser cet objet.")
+		fmt.Println("Your life is too precious to use this item.")
 		return false
 	}
 	gain := item.Power
@@ -86,8 +86,8 @@ func applyHeal(item Item, perso *Character) bool {
 		gain = perso.PvMax - perso.PvAct
 	}
 	perso.PvAct += gain
-	fmt.Printf("Vous utilisez %s et récupérez %d PV !\n", item.Name, gain)
-	return true // consommé
+	fmt.Printf("used %s and recup %d PV !\n", item.Name, gain)
+	return true // consomed
 }
 
 func useItem(perso *Character, monster *Monster) {
@@ -100,17 +100,16 @@ func useItem(perso *Character, monster *Monster) {
 	switch item.Kind {
 	case "weapon":
 		applyWeapon(item, monster)
-		// retirer si arme consommable :
-		// perso.Bag = append(perso.Bag[:idx], perso.Bag[idx+1:]...)
+		// remove if weapon used
 
 	case "heal":
 		if applyHeal(item, perso) {
-			// soin consommé
+			// heal consomed
 			perso.Bag = append(perso.Bag[:idx], perso.Bag[idx+1:]...)
 		}
 
 	default:
-		fmt.Println("Objet inconnu.")
+		fmt.Println("inconu object.")
 	}
 }
 
@@ -121,29 +120,29 @@ func displayStatus(p *Character, m *Monster) {
 }
 
 func askPlayerAction() string {
-	fmt.Println("Actions :\n1 - Attaque basique\n2 - Utiliser objet\n3 - Fuite")
+	fmt.Println("Action :\n1 - Clasic Attack\n2 - used an object in your bag\n3 - Leak")
 	var choice string
 	fmt.Scanln(&choice)
 	return choice
 }
 
 func playerAttack(p *Character, m *Monster) {
-	base := rand.Intn(21) + 10 // dégâts aléatoires 10..30
-	dmg := base + p.Level*2    // option : bonus lié au level
+	base := rand.Intn(21) + 10 // random damage 10..30
+	dmg := base + p.Level*2    // option: level-based bonus
 	m.CurLP -= dmg
-	fmt.Printf("%s attaque et inflige %d dégâts !\n", p.Name, dmg)
+	fmt.Printf("%s attacks and inflicts %d damage !\n", p.Name, dmg)
 }
 
 func monsterAttack(p *Character, m *Monster) {
 	dmg := rand.Intn(m.AttPt + 1)
 	p.PvAct -= dmg
-	fmt.Printf("%s attaque et inflige %d dégâts !\n", m.Name, dmg)
+	fmt.Printf("%s attacks and inflicts %d damage !\n", m.Name, dmg)
 }
 
 func Battle(t5 Text, perso *Character) {
-	fmt.Println("⚔️  Un combat commence !")
+	fmt.Println("battle start !")
 	monster := PickRandomMonster()
-	fmt.Printf("Un %s sauvage apparaît avec %d PV !\n", monster.Name, monster.CurLP)
+	fmt.Printf("%s have %d PV !\n", monster.Name, monster.CurLP)
 
 	for {
 		displayStatus(perso, &monster)
@@ -154,22 +153,22 @@ func Battle(t5 Text, perso *Character) {
 		case "2":
 			useItem(perso, &monster)
 		case "3":
-			fmt.Println("Vous prenez la fuite !")
+			fmt.Println("You give up !")
 			return
 		default:
-			fmt.Println("Choix invalide.")
+			fmt.Println("Invalid choice.")
 			continue
 		}
 
 		if monster.CurLP <= 0 {
-			fmt.Printf("🎉 Vous avez vaincu %s !\n", monster.Name)
+			fmt.Printf("Victory soldat %s !\n", monster.Name)
 			return
 		}
 
 		monsterAttack(perso, &monster)
 
 		if perso.PvAct <= 0 {
-			fmt.Println("💀 Vous êtes K.O. !")
+			fmt.Println("Lost battle")
 			return
 		}
 	}
