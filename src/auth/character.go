@@ -29,10 +29,10 @@ type Inventory struct {
 func InitCharacter() Character {
 	var name, class string
 
-	fmt.Print("Entrez le nom de votre soldat: ")
+	fmt.Print("Enter your soldier's name: ")
 	fmt.Scanln(&name)
 
-	fmt.Print("Entrez la nationalité (classe) de votre soldat: ")
+	fmt.Print("Enter your soldier's nationality: ")
 	fmt.Scanln(&class)
 
 	return Character{
@@ -48,11 +48,11 @@ func InitCharacter() Character {
 
 func AccessInventory(perso *Character) {
 	if len(perso.Bag) == 0 {
-		fmt.Println("Inventaire vide.")
+		fmt.Println("Your inventory is empty.")
 		return
 	}
-	fmt.Println("Inventaire :")
+	fmt.Println("inventory :")
 	for i, it := range perso.Bag {
-		fmt.Printf("%d - %s (%s, puissance %d)\n", i+1, it.Name, it.Kind, it.Power)
+		fmt.Printf("%d - %s (%s, power %d)\n", i+1, it.Name, it.Kind, it.Power)
 	}
 }
