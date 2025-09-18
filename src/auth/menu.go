@@ -2,41 +2,29 @@ package auth
 
 import (
 	"fmt"
-	"projet-red_from-boots-to-brass/src/game"
-	"projet-red_from-boots-to-brass/src/utils"
 )
-
-type Text struct {
-	text string
-}
-
-func Book() (Text, Text) {
-	t1 := Text{"Prologue: \n Dans ce monde, la gloire n’est pas donnée. Elle se prend, balle après balle. \n Je ne suis qu’un soldat parmi des milliers : un matricule, une arme, un ordre. \n On ne choisit pas où l’on commence. On choisit jusqu’où on ira. \n Les tirs résonnent au loin, les hélicoptères déchirent le ciel. Aujourd’hui, ce n’est plus qu’une mission : c’est le premier pas. \n Le champ de bataille forge les hommes… et je compte bien gravir chaque échelon, quel qu’en soit le prix."}
-	t2 := Text{"Rêgle: \n Vous pouvez faire des combats dans Game.\nVous pouvez visité le Marchant, qui vous permet de faire des achats."}
-	return t1, t2
-}
 
 func Menu(t1, t2 Text) {
 	var choiceOption string
 	for {
-		fmt.Print("Menu:\n1 - Prologue\n2 - Rules\n3 - Game\n4 - Marchand\nPour quitter le jeu lisez le prologue ;)")
+		fmt.Println("Menu:\n1 - Prologue\n2 - Rules\n3 - Menu de jeu\n4 - Marchand\nPour quitter le jeu lisez le prologue ;)")
 		fmt.Scan(&choiceOption)
 
 		switch choiceOption {
 		case "1", "Prologue":
 			fmt.Print(t1)
+			BackMenuPrincipal()
 		case "2", "Rules":
 			fmt.Print(t2)
-		case "3", "Game":
-			b1, b2 := game.Books()
-			game.Fight(b1, b2)
+			BackMenuPrincipal()
+		case "3", "Menu de jeu":
+			t3, t4 := Book2()
+			Fight(t3, t4)
 		case "4", "Marchand":
-			w1, w2, w3, e1, e2, e3, l1, l2 := game.Update()
-			fmt.Print(w1, w2, w3, e1, e2, e3, l1, l2)
+			Marchand()
 		default:
-			utils.Invalid()
+			Invalid()
 		}
-
 	}
 }
 
