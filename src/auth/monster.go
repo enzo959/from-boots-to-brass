@@ -11,7 +11,7 @@ type Monster struct {
 
 func DisplayMonster() []Monster {
 	return []Monster{
-		{"soldat_entrainement", 100, 100, 10},
+		{"soldier_training", 100, 100, 10},
 		{"Hitler", 200, 200, 25},
 		{"Mussolini", 120, 120, 15},
 		{"Franco", 150, 150, 20},
@@ -21,7 +21,7 @@ func DisplayMonster() []Monster {
 
 func PickRandomMonster() Monster {
 	monsters := DisplayMonster()
-	// pondérations (ex : plus petit = plus rare)
+	// weightings (the smallest is rarer)
 	weights := []int{40, 5, 20, 15, 20}
 	total := 0
 	for _, w := range weights {
