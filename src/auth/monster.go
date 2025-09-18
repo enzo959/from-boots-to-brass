@@ -1,18 +1,38 @@
 package auth
 
+import "math/rand"
+
 type Monster struct {
-	name   string
-	max_lp int
-	cur_lp int
-	att_pt int
+	Name  string
+	MaxLP int
+	CurLP int
+	AttPt int // attaque de base
 }
 
-func DisplayMonster() (Monster, Monster, Monster, Monster, Monster, Monster) {
-	m1 := Monster{"Training gobelin", 100, 100, 1}
-	m2 := Monster{"M2", 100, 100, 1}
-	m3 := Monster{"M3", 80, 100, 1}
-	m4 := Monster{"M4", 80, 100, 1}
-	m5 := Monster{"M5", 70, 100, 1}
-	m6 := Monster{"M6", 100, 100, 1}
-	return m1, m2, m3, m4, m5, m6
+func DisplayMonster() []Monster {
+	return []Monster{
+		{"soldat_entrainement", 100, 100, 10},
+		{"Hitler", 200, 200, 25},
+		{"Mussolini", 120, 120, 15},
+		{"Franco", 150, 150, 20},
+		{"Pétain", 180, 180, 18},
+	}
+}
+
+func PickRandomMonster() Monster {
+	monsters := DisplayMonster()
+	// pondérations (ex : plus petit = plus rare)
+	weights := []int{40, 5, 20, 15, 20}
+	total := 0
+	for _, w := range weights {
+		total += w
+	}
+	r := rand.Intn(total)
+	for i, w := range weights {
+		if r < w {
+			return monsters[i]
+		}
+		r -= w
+	}
+	return monsters[0] // fallback
 }
