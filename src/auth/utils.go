@@ -41,42 +41,17 @@ func Invalid() {
 	Clear()                                      // clean terminal
 }
 
-func BackMenuPrincipal() { //Crée un autre dossier pour crée un autre package et pouvoir faire une chaine de passage.
-	var back string // var back for back to menu
-	fmt.Println("\nAppuyé sur 'q' pour revenir au Menu Principal")
-	fmt.Scan(&back)
-	if back == "q" {
-		t1, t2 := Book1()
-		Menu(t1, t2) // exit definitiv
-	} else {
-		Clear()
-	}
-}
-
-func BackMenuJeu() { //Crée un autre dossier pour crée un autre package et pouvoir faire une chaine de passage.
-	var back string // var back for back to menu
-	fmt.Println("\nAppuyé sur 'q' pour revenir au Menu de Jeu")
-	fmt.Scan(&back)
-	if back == "q" {
-		t3, t4 := Book2()
-		Fight(t3, t4) // exit definitiv
-	} else {
-		Clear()
-	}
-}
-func BackMarchand() { //Crée un autre dossier pour crée un autre package et pouvoir faire une chaine de passage.
-	var back string // var back for back to menu
-	fmt.Println("\nAppuyé sur 'q' pour revenir au Marchand")
-	fmt.Scan(&back)
-	if back == "q" {
-		Marchand() // exit definitiv
-	} else {
-		Clear()
-	}
-}
-
 func Back() {
 	var back string // var back for back to menu
 	fmt.Println("\nAppuyez sur 'q' pour revenir en arrière")
-	fmt.Scan(&back)
+	fmt.Scanln(&back)
+}
+
+func CheckPerso(perso *Character) bool {
+	if perso == nil {
+		fmt.Println("Créez d’abord un personnage pour acheter.")
+		Back()
+		return false
+	}
+	return true
 }
